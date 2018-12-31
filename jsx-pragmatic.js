@@ -41,6 +41,10 @@ module.exports = function jsxPragmatic (babel) {
       state.set('jsxDetected', true);
     },
     // JSXElement
+
+    JSXFragment: function (path, state) {
+      state.set('jsxDetected', true);
+    },
   };
 
   return {
@@ -49,7 +53,7 @@ module.exports = function jsxPragmatic (babel) {
         throw new Error("babel-plugin-jsx-pragmatic: You must specify `module` and `import`");
       }
     },
-    inherits: require("babel-plugin-syntax-jsx"),
+    inherits: require("@babel/plugin-syntax-jsx").default,
     visitor: visitor,
   };
 };
